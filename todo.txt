@@ -1,0 +1,11 @@
+-create a readme
+-Make a command line interface format. This will eventually be an interactive terminal for working with LTSpice as it is open.
+-Create some basic commands, run op point, change parameter, run LTSpice, open LTSpice, etc.
+    -create needed parsers
+-Add more analysis tools to the toolset
+    -regression analysis of waveforms
+    -tolerance analysis of components
+-Add self designing tools?
+    -BJT amp designer?
+    -framework for making your own template design?
+-Add gui interface? for these additional commands?
