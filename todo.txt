@@ -6,6 +6,7 @@
     -regression analysis of waveforms
     -tolerance analysis of components
 -Add to PyPi index
+
 -Add self designing tools?
     -BJT amp designer?
     -framework for making your own template design?
