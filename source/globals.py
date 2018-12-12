@@ -1,3 +1,9 @@
+#Created December 11, 2018 by Wesley Stirk
+#Last updated December 12, 2018 by Wesley Stirk
+"""
+This file is for all global constants and information that is needed for the entire program.
+"""
+
 import ltspice_commands
 import testtest
 
