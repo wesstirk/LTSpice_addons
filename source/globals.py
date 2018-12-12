@@ -4,7 +4,7 @@
 This file is for all global constants and information that is needed for the entire program.
 """
 
-import ltspice_commands
+import ltspice_commands as comms
 import testtest
 
 ## constants
@@ -23,6 +23,7 @@ DEFAULT_COMMAND = " "
 commands = {
     'exit': (exit, 'exit the ltspice_terminal'),
     'test': (testtest.test, "perform a basic test"),
-    'help': (ltspice_commands.terminal_help, "display this help menu")
+    'help': (comms.terminal_help, "display this help menu"),
+    'start': (comms.start_ltspice, 'starts the LTspice program\n \tMust be properly configured in the cfg file.')
 }
 

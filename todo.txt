@@ -1,5 +1,4 @@
 -create a readme
--Make a command line interface format. This will eventually be an interactive terminal for working with LTSpice as it is open.
 -Create some basic commands, run op point, change parameter, run LTSpice, open LTSpice, etc.
     -create needed parsers
 -Add more analysis tools to the toolset

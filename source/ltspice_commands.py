@@ -9,6 +9,9 @@ This is because how it it called in ltspice_terminal. If uneeded, just put it as
 """
 
 import globals as glb
+import ltspice_addon_setup as setup
+import os
+import sys
 
 ##
 
@@ -18,3 +21,23 @@ def terminal_help(params=None):
     for com in glb.commands.keys() : # print all of the helps
         print(com, ": ", glb.commands[com][glb.HELP_INDEX])
 
+
+"""
+Starts LTSpice.
+The EXE_FILE parameter in the cfg file must point to the actual LTSpice program in order for this function to work properly
+The params are not used. 
+returns True if it worked False otherwise
+"""
+def start_ltspice(params=None) :
+    print("opening LTSpice...")
+    try:
+        cfg = setup.read_cfg()
+        os.system(cfg['EXE_FILE']) #todo: better error checking. This will only return a value after the program closes.
+        return True
+    except:
+        print("Error in opening LTSpice")
+        print(sys.exc_info()[0], " has occurred.")
+        return False
+
+def tolerances(params=None) :
+    print("tolerances")

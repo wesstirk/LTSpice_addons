@@ -6,6 +6,9 @@
 import terminal #just do it myself?
 import globals as glb
 
+#todo: add an operating system check. Make sure that we are in windows
+#call the initialize function?
+
 
 #This is the main loop of the program. It continues to loop, executing commands, until the exit command.
 while(True):
