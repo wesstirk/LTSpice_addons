@@ -1,4 +1,8 @@
 -create a readme
+-add ability to read in a series of commands when calling the function
+    -kind of like a tcl file
+    -ability to call program, pass in options, without having to get into the entire terminal
+        probably will need a ltspice_addon.py module that checks for arguments and runs them, but the default will be to call the terminal
 -Create some basic commands, run op point, change parameter, run LTSpice, open LTSpice, etc.
     -create needed parsers
 -Add more analysis tools to the toolset

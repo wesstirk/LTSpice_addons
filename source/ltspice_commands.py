@@ -1,5 +1,5 @@
 # Created December 11, 2018 by Wesley Stirk
-# Last updated December 12, 2018 by Wesley Stirk
+# Last updated December 24, 2018 by Wesley Stirk
 """
 This file is to have all of the functions that will be called by the ltspice_terminal.
 This is where the bulk of the functionality will be added to the program.
@@ -32,7 +32,16 @@ def start_ltspice(params=None) :
     print("opening LTSpice...")
     try:
         cfg = setup.read_cfg()
-        os.system(cfg['EXE_FILE']) #todo: better error checking. This will only return a value after the program closes.
+        BAT_NAME = "ltspice_start.bat"
+
+        #it's a bit of a hack, but it's easiest to work from a bat file while in windows. It's easier to start a subprocess on my machine.
+        batFile = open(BAT_NAME, 'w') #create the bat file
+        command = 'start "LTSpice with Terminal" ' + cfg['EXE_FILE']  #this is the command. Start, then the title, then what is being started
+        batFile.write(command) #write the command to the file
+        batFile.close() #close the file so that it can be used
+
+        os.system(BAT_NAME) #run the bat file
+
         return True
     except:
         print("Error in opening LTSpice")

@@ -1,5 +1,5 @@
 #Created by Wesley Stirk on December 11, 2018
-#Last update by Wesley Stirk on December 12, 2018
+#Last updated by Wesley Stirk on December 12, 2018
 #This will be the main script that is called to run all of the others
 #The idea is that LTSpice will be open at the same time as the terminal and it is an interactive interface.
 
