@@ -1,5 +1,5 @@
 # Created December 11, 2018 by Wesley Stirk
-# Last updated December 24, 2018 by Wesley Stirk
+# Last updated June 11, 2018 by Wesley Stirk
 """
 This file is to have all of the functions that will be called by the ltspice_terminal.
 This is where the bulk of the functionality will be added to the program.
@@ -71,3 +71,5 @@ def open_ltspice_file(params=None) :
         print(err)
         return False
 
+def close_ltspice(parmas=None) :
+    print("closing?")

@@ -1,10 +1,10 @@
 
 import globals as glb
+import ltspice_session
 
 def test(params=None) :
-    print("This is the test function")
-    print("It doesn't do anything yet....")
-    glb.currentFile = 'random.asc'
+    ltspice_session.UpdatePids()
+
 
 def test2(params=None) :
     print(glb.currentFile)
