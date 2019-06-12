@@ -14,6 +14,8 @@ HELP_INDEX = 1 #index of the help description
 
 DEFAULT_COMMAND = " "
 
+currentFile = "" #this will be used later on and will be set and used by other functions.
+
 
 # Feel free to add more commands and funtionality to the terminal. This will typically be done by adding more commands.
 # This terminal was designed to be easily modified for your purposes.
@@ -25,6 +27,8 @@ commands = {
     'test': (testtest.test, "perform a basic test"),
     'help': (comms.terminal_help, "display this help menu"),
     'start': (comms.start_ltspice, 'starts the LTspice program\n \tMust be properly configured in the cfg file.'),
-    'setup': (comms.ltsetup, 'configures needed files for use in the system.\n \tShould only need to be used once.')
+    'setup': (comms.ltsetup, 'configures needed files for use in the system.\n \tShould only need to be used once.'),
+    'test2': (testtest.test2, "perfomr a helper test"),
+    'open': (comms.open_ltspice_file, 'opens the specified asc file in LTSpice')
 }
 

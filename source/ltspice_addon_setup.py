@@ -19,6 +19,7 @@ def read_cfg() :
 
 
 def find_exe() :
+    #todo: finish editing and ensure that this function works.
     FIND_BAT = 'ltspice_find.bat'
     f = open(FIND_BAT, 'w')
     f.write('cd \\ \n') #write a bat file to find the needed file
