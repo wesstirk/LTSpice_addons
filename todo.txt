@@ -14,3 +14,5 @@
     -BJT amp designer?
     -framework for making your own template design?
 -Add gui interface? for these additional commands?
+
+-Add functionality for both windows and linux. Make sure to support both platforms

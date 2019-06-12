@@ -50,3 +50,7 @@ def start_ltspice(params=None) :
 
 def tolerances(params=None) :
     print("tolerances")
+
+def ltsetup(params=None) :
+    print('setup time')
+    setup.find_exe()

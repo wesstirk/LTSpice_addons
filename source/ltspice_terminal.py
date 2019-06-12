@@ -17,7 +17,8 @@ while(True):
     param = args[1:] # these will be passed as arguments into the various functions
                         # any error checking is done by the various functions. Not here.
 
-    if glb.commands.__contains__(args[0]) : #if the command is in the list. Call the function
+
+    if args[0] in glb.commands : #if the command is in the list. Call the function
         glb.commands[args[0]][glb.FUNCTION_INDEX](param)
     elif command != glb.DEFAULT_COMMAND : # if it doesn't exist then call an error and show the help menu
         print("ERROR: Invalid Command")

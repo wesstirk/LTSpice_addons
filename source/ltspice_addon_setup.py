@@ -1,4 +1,5 @@
 import os
+import win32api
 
 CFG_FILE = 'ltspice_addon.cfg' #currently needs to be in the same directory.
 
@@ -18,4 +19,12 @@ def read_cfg() :
 
 
 def find_exe() :
-    print("find exe")
+    FIND_BAT = 'ltspice_find.bat'
+    f = open(FIND_BAT, 'w')
+    f.write('cd \\ \n') #write a bat file to find the needed file
+    f.write('for /f "tokens=*" %%a in (' + "'dir xvii*.exe /b /s') do set p=%%a \n")
+    f.close()
+
+    myFile = os.system(FIND_BAT)
+    print(myFile)
+    print(p)
