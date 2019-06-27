@@ -18,8 +18,7 @@ DEFAULT_COMMAND = " "
 
 ##global variables used among many parts of the program
 
-currentFile = ltspice_session.LTSpice_Session() #this will be used later on and will be set and used by other functions.
-    #uses the default constructor for now.
+activeFiles = ltspice_session.SessionControl() #create an object to manage all of the sessions
 
 # Feel free to add more commands and funtionality to the terminal. This will typically be done by adding more commands.
 # This terminal was designed to be easily modified for your purposes.
