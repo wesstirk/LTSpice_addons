@@ -12,6 +12,8 @@ import globals as glb
 import ltspice_addon_setup as setup
 import os
 import sys
+import subprocess
+import ltspice_session as sess
 
 ##
 
@@ -47,6 +49,18 @@ def ltsetup(params=None) :
     print('setup time')
     setup.find_exe()
 
+def sys_ls(params=None) :
+    files = os.listdir()
+    for f in files :
+        print(f)
+
+def sys_cd(params=None) :
+    path = params[0]
+    os.chdir(path)
+
+def sys_pwd(params=None) :
+    print(os.path.abspath(os.curdir))
+
 '''
 Starts LTSpice with a specified file opened
 params must have one value - the file to be opened
@@ -72,4 +86,4 @@ def open_ltspice_file(params=None) :
         return False
 
 def close_ltspice(parmas=None) :
-    print("closing?")
+    sess.pidList[0].Stop()

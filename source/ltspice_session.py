@@ -9,6 +9,7 @@ Used to keep track of all of the needed data when opening and closing various fi
 import math
 import os
 import subprocess
+import signal
 
 class LTSpice_Session:
     def __init__(self, name="dummy.asc", pid=math.nan, isOpen=False):
@@ -29,7 +30,13 @@ class LTSpice_Session:
         self.isOpen = False
     def GetOpenStatus(self):
         return self.isOpen
+    def SetVars(self, name="dummy.asc", pid=math.nan, isOpen=False):
+        self.name = name  # the name of the file
+        self.pid = pid  # the pid reference in the operating system (mainly used for closing the program when needed."
+        self.isOpen = isOpen  # keeping track of whether the session of ltspice has actually been opened.
 
+    def Stop(self):
+        os.kill(int(self.pid), signal.SIGINT)
 ## the support functions for the sessions
 
 pidList = [] #the list that keeps track of all of the active ltspice sessions
@@ -55,4 +62,5 @@ def UpdatePids() :
         pidList.remove(p)
     print("new", newPid)
     print("gone",removedPid)
+    print("all", pidList)
     return newPid, removedPid

@@ -11,6 +11,9 @@ import globals as glb
 
 
 #This is the main loop of the program. It continues to loop, executing commands, until the exit command.
+
+##todo: setup all of the configurations locally here in the program, or deal with the case when the directory changes.
+
 while(True):
     command = terminal.prompt(" ", glb.DEFAULT_COMMAND) # prompt for the command.
     args = command.split(' ') # split into the command and the parameters to it.
