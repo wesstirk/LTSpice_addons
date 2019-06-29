@@ -67,5 +67,10 @@ def open_ltspice_file(params=None) :
 def show_sessions(params=None) :
     glb.activeFiles.Show()
 
-def close_ltspice(parmas=None) :
-    sess.pidList[0].Stop()
+def close_ltspice(params=None) :
+    if len(params) < 1 :
+        print("Error in closing the LTSpice session")
+        print("No arguments provided!")
+        return False
+
+    glb.activeFiles.Kill(params[0])

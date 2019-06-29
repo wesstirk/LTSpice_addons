@@ -66,8 +66,9 @@ class SessionControl() :
         try:
             print(self.EXE_NAME)
             newSess = subprocess.Popen(self.EXE_NAME)
-            self.sessList.append((newSess, "nofile{}".format(self.startNum), newSess.pid) )
-            self.startNum += 1
+            if newSess.poll() == None or newSess.returncode == 0: #if it is still open and it worked.
+                self.sessList.append((newSess, "nofile{}".format(self.startNum), newSess.pid) )
+                self.startNum += 1
             # os.system(command)
             return True
         except Exception as err:
@@ -86,7 +87,9 @@ class SessionControl() :
             print("Opening", file, "now...")
             print(self.EXE_NAME)
             newSess = subprocess.Popen(self.EXE_NAME+" "+file)
-            self.sessList.append((newSess, file, newSess.pid))
+            ##todo: try and make it so it doesn't get added to the list if it is an invalid file....
+            if newSess.poll() == None or newSess.returncode == 0: #if it is still open and it worked.
+                self.sessList.append((newSess, file, newSess.pid))
             # os.system(command)
             return True
         except Exception as err:
@@ -113,17 +116,18 @@ class SessionControl() :
             print(i[1], ":", i[2])
 
 
-    def Kill(pid = None, name = None) :
+    def Kill(self, pid = None, name = None) :
         if pid != None :
-            print(self.sessList)
+            self.Show()
             for i in self.sessList :
-                if i.pid == pid :
-                    i.kill()
-                    self.sessList.pop(i)
+                if i[2] == int(pid) :
+                    print("Closing", i[1])
+                    i[0].kill()
+                    self.sessList.remove(i)
                     #i.Stop() #stop the process
                     #self.sessList.pop(i) #and remove it from the list.
                     break
-            print(self.sessList)
+            self.Show()
 
 
 
