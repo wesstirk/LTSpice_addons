@@ -10,6 +10,12 @@
     -tolerance analysis of components
 -Add to PyPi index
 
+-check out similar libraries and resources:
+    https://pypi.org/project/ltspice/
+    https://pypi.org/project/PySpice/
+    https://pypi.org/project/spiceypy/
+    https://buildmedia.readthedocs.org/media/pdf/spiceypy/master/spiceypy.pdf
+
 -Add self designing tools?
     -BJT amp designer?
     -framework for making your own template design?
