@@ -64,7 +64,8 @@ def open_ltspice_file(params=None) :
         return False
     glb.activeFiles.OpenFile(params[0])
 
-
+def show_sessions(params=None) :
+    glb.activeFiles.Show()
 
 def close_ltspice(parmas=None) :
     sess.pidList[0].Stop()

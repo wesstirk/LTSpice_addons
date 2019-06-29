@@ -34,6 +34,7 @@ commands = {
     'test2': (testtest.test2, "perfomr a helper test"),
     'open': (comms.open_ltspice_file, 'opens the specified asc file in LTSpice'),
     'close': (comms.close_ltspice, 'closes ltspice (not the terminal)'),
+    'show': (comms.show_sessions, 'shows all of the ltspice sessions that the terminal is keeping track of'),
     'ls': (comms.sys_ls, 'shows the files in the current directory, (like the ls command in linux)'),
     'cd': (comms.sys_cd, 'moves to a different direcoty'),
     'pwd': (comms.sys_pwd, 'shows the current directory path')

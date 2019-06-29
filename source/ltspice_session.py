@@ -51,9 +51,9 @@ class LTSpice_Session:
 
 class SessionControl() :
     def __init__(self):
-        self.sessList = []
-        self.EXE_NAME = setup.read_cfg()['EXE_FILE']
-
+        self.sessList = [] #a list that will keep track of the tuples of session information
+        self.EXE_NAME = setup.read_cfg()['EXE_FILE'] # the executable file to call
+        self.startNum = 0 #used to keep track of the sessions that don't have file names at the start.
     """
     Starts LTSpice.
     The EXE_FILE parameter in the cfg file must point to the actual LTSpice program in order for this function to work properly
@@ -66,7 +66,8 @@ class SessionControl() :
         try:
             print(self.EXE_NAME)
             newSess = subprocess.Popen(self.EXE_NAME)
-            self.sessList.append(newSess)
+            self.sessList.append((newSess, "nofile{}".format(self.startNum), newSess.pid) )
+            self.startNum += 1
             # os.system(command)
             return True
         except Exception as err:
@@ -85,7 +86,7 @@ class SessionControl() :
             print("Opening", file, "now...")
             print(self.EXE_NAME)
             newSess = subprocess.Popen(self.EXE_NAME+" "+file)
-            self.sessList.append((newSess, file))
+            self.sessList.append((newSess, file, newSess.pid))
             # os.system(command)
             return True
         except Exception as err:
@@ -105,6 +106,11 @@ class SessionControl() :
                 return True
         return False
 
+    def Show(self):
+        print("File Name : PID")
+        print("----------------")
+        for i in self.sessList :
+            print(i[1], ":", i[2])
 
 
     def Kill(pid = None, name = None) :
