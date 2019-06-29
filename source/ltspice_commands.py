@@ -31,16 +31,7 @@ The params are not used.
 returns True if it worked False otherwise
 """
 def start_ltspice(params=None) :
-    print("opening LTSpice...")
-    try:
-        cfg = setup.read_cfg()
-        command = 'start "LTSpice with Terminal" ' + cfg['EXE_FILE']  #this is the command. Start, then the title, then what is being started
-        os.system(command)
-        return True
-    except:
-        print("Error in opening LTSpice")
-        print(sys.exc_info()[0], " has occurred.")
-        return False
+    glb.activeFiles.Start()
 
 def tolerances(params=None) :
     print("tolerances")
@@ -71,19 +62,9 @@ def open_ltspice_file(params=None) :
         print("Error in opening the LTSpice file")
         print("No file provided!")
         return False
+    glb.activeFiles.OpenFile(params[0])
 
-    try :
-        file = params[0]
-        print("Opening", file, "now...")
-        exe = setup.read_cfg()['EXE_FILE'] #finds the LTSpice the exe file in the cfg file.
-        command = 'start "LTSpice With Terminal" ' + exe + ' ' + file
-        os.system(command)
-        return True
 
-    except Exception as err:
-        print("Error in opening the LTSpice file")
-        print(err)
-        return False
 
 def close_ltspice(parmas=None) :
     sess.pidList[0].Stop()

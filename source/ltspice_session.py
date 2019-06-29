@@ -10,6 +10,8 @@ import math
 import os
 import subprocess
 import signal
+import ltspice_addon_setup as setup
+import sys
 
 class LTSpice_Session:
     def __init__(self, name="dummy.asc", pid=math.nan, isOpen=False):
@@ -50,7 +52,46 @@ class LTSpice_Session:
 class SessionControl() :
     def __init__(self):
         self.sessList = []
-        self.EXE_NAME = "XVIIx64.exe"
+        self.EXE_NAME = setup.read_cfg()['EXE_FILE']
+
+    """
+    Starts LTSpice.
+    The EXE_FILE parameter in the cfg file must point to the actual LTSpice program in order for this function to work properly
+    The params are not used. 
+    returns True if it worked False otherwise
+    """
+
+    def Start(self):
+        print("opening LTSpice...")
+        try:
+            print(self.EXE_NAME)
+            newSess = subprocess.Popen(self.EXE_NAME)
+            self.sessList.append(newSess)
+            # os.system(command)
+            return True
+        except Exception as err:
+            print("Error in opening LTSpice")
+            print(err)
+            return False
+
+    '''
+    Starts LTSpice with a specified file opened
+    params must have one value - the file to be opened
+    returns True if it worked, False otherwise
+    '''
+
+    def OpenFile(self, file):
+        try:
+            print("Opening", file, "now...")
+            print(self.EXE_NAME)
+            newSess = subprocess.Popen(self.EXE_NAME+" "+file)
+            self.sessList.append((newSess, file))
+            # os.system(command)
+            return True
+        except Exception as err:
+            print("Error in opening LTSpice")
+            print(err)
+            return False
 
     '''
     Assumes that toSearch is a list of LTSpice_Sessions. 
@@ -70,11 +111,15 @@ class SessionControl() :
         if pid != None :
             print(self.sessList)
             for i in self.sessList :
-                if i.GetPid() == pid :
-                    i.Stop() #stop the process
-                    self.sessList.pop(i) #and remove it from the list.
+                if i.pid == pid :
+                    i.kill()
+                    self.sessList.pop(i)
+                    #i.Stop() #stop the process
+                    #self.sessList.pop(i) #and remove it from the list.
                     break
             print(self.sessList)
+
+
 
     def AddSession(self, sessName, sessPid, isOpen = True):
         self.sessList.append(sessName, sessId, isOpen)
