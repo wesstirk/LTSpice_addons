@@ -118,7 +118,6 @@ class SessionControl() :
 
     def Kill(self, pid = None, name = None) :
         if pid != None :
-            self.Show()
             for i in self.sessList :
                 if i[2] == int(pid) :
                     print("Closing", i[1])
@@ -127,8 +126,15 @@ class SessionControl() :
                     #i.Stop() #stop the process
                     #self.sessList.pop(i) #and remove it from the list.
                     break
-            self.Show()
-
+        if name != None :
+            for i in self.sessList :
+                if i[1] == name :
+                    print("Closing", i[1])
+                    i[0].kill()
+                    self.sessList.remove(i)
+                    #i.Stop() #stop the process
+                    #self.sessList.pop(i) #and remove it from the list.
+                    break
 
 
     def AddSession(self, sessName, sessPid, isOpen = True):

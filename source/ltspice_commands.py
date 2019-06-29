@@ -73,4 +73,7 @@ def close_ltspice(params=None) :
         print("No arguments provided!")
         return False
 
-    glb.activeFiles.Kill(params[0])
+    if params[0].isnumeric() :
+        glb.activeFiles.Kill(pid=params[0])
+    else :
+        glb.activeFiles.Kill(name=params[0])
