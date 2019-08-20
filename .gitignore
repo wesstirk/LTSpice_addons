@@ -1,1 +1,4 @@
 source/__pycache__
+examples/*.log
+examples/*.raw
+examples/*.net

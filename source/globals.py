@@ -37,6 +37,10 @@ commands = {
     'show': (comms.show_sessions, 'shows all of the ltspice sessions that the terminal is keeping track of'),
     'ls': (comms.sys_ls, 'shows the files in the current directory, (like the ls command in linux)'),
     'cd': (comms.sys_cd, 'moves to a different direcoty'),
-    'pwd': (comms.sys_pwd, 'shows the current directory path')
+    'pwd': (comms.sys_pwd, 'shows the current directory path'),
+    'run':  (comms.run, 'runs the simulation currenlty shown on the ltspice schematic'),
+    'save': (comms.save_schematic, 'saves the schematically currently shown on the screen'),
+    'new': (comms.new_schematic, 'opens a new schematic'),
+    'full': (comms.zoom_full, 'zooms to the full extent of the schematic')
 }
 

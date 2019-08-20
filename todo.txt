@@ -3,6 +3,14 @@
     -kind of like a tcl file
     -ability to call program, pass in options, without having to get into the entire terminal
         probably will need a ltspice_addon.py module that checks for arguments and runs them, but the default will be to call the terminal
+
+DONE -run all of the standard commands using pyautogui
+-then run all of the basic commands using python libraries
+-then add tolerances
+
+
+
+
 -Create some basic commands, run op point, change parameter, run LTSpice, open LTSpice, etc.
     -create needed parsers
 -Add more analysis tools to the toolset

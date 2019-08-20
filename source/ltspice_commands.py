@@ -14,6 +14,7 @@ import os
 import sys
 import subprocess
 import ltspice_session as sess
+import pyautogui as gui
 
 ##
 
@@ -23,6 +24,30 @@ def terminal_help(params=None):
     for com in glb.commands.keys() : # print all of the helps
         print(com, ": ", glb.commands[com][glb.HELP_INDEX])
 
+
+def click_button(image, numClicks = 2) :
+    '''
+    a helper function for clicking on buttons in ltspice
+    it accepts the path of an image to look for and clicks on it.
+    '''
+    try :
+        buttonLocation = gui.locateCenterOnScreen(image)
+        gui.click(x=buttonLocation.x, y=buttonLocation.y, clicks=numClicks)
+    except Exception as err:
+        print("Unable to click on the needed button")
+        print(err)
+
+def run(params = None) :
+    click_button('../resources/run.png')
+
+def save_schematic(params = None) :
+    click_button('../resources/save.png')
+
+def new_schematic(params = None) :
+    click_button('../resources/new_schematic.PNG', numClicks = 1)
+
+def zoom_full(params = None) :
+    click_button('../resources/zoom_full.png')
 
 """
 Starts LTSpice.
